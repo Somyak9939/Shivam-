@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A. Kumar Somyak — Tax Consultant, Kolkata</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#132038;
+    --paper:#F6F4EE;
+    --paper-2:#EFEBE0;
+    --gold:#B4842A;
+    --gold-soft:#E8DAB8;
+    --slate:#5B6472;
+    --text:#1B1F27;
+    --line:#D8D2C1;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--text);
+    font-family:'Manrope', sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Spectral', serif;
+    font-weight:500;
+    margin:0;
+    color:var(--ink);
+  }
+  em{font-style:italic; color:var(--ink);}
+  a{color:inherit;}
+  .wrap{
+    max-width:960px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  header{
+    border-bottom:1px solid var(--line);
+    padding:22px 0;
+  }
+  .headerbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .brandmark{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.04em;
+    color:var(--slate);
+  }
+  .brandmark b{color:var(--ink);}
+  nav a{
+    font-size:14px;
+    text-decoration:none;
+    color:var(--text);
+    margin-left:24px;
+    padding-bottom:2px;
+    border-bottom:1px solid transparent;
+    transition:border-color .15s ease;
+  }
+  nav a:hover{border-color:var(--gold);}
+
+  .hero{
+    padding:76px 0 64px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+  }
+  .hero .kicker{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--gold);
+    margin-bottom:18px;
+    display:block;
+  }
+  .hero h1{
+    font-size:clamp(38px, 6vw, 64px);
+    line-height:1.05;
+    max-width:12ch;
+  }
+  .hero .role{
+    font-size:19px;
+    color:var(--slate);
+    margin-top:20px;
+    max-width:46ch;
+  }
+  .hero .role em{color:var(--text); font-style:italic;}
+  .hero-meta{
+    margin-top:40px;
+    display:flex;
+    gap:36px;
+    flex-wrap:wrap;
+    border-top:1px solid var(--line);
+    padding-top:24px;
+  }
+  .hero-meta div{font-family:'IBM Plex Mono', monospace; font-size:13px;}
+  .hero-meta span{
+    display:block;
+    color:var(--slate);
+    font-size:11px;
+    letter-spacing:.02em;
+    margin-bottom:4px;
+  }
+  .cta-row{
+    margin-top:36px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 22px;
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    border:1px solid var(--ink);
+    color:var(--paper);
+    background:var(--ink);
+    transition:background .15s ease, color .15s ease;
+  }
+  .btn:hover{background:var(--paper); color:var(--ink);}
+  .btn.outline{
+    background:transparent;
+    color:var(--ink);
+  }
+  .btn.outline:hover{background:var(--ink); color:var(--paper);}
+
+  section{padding:64px 0;border-bottom:1px solid var(--line);}
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:40px;
+    gap:20px;
+  }
+  .section-head h2{font-size:30px;}
+  .section-head .note{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--slate);
+    white-space:nowrap;
+  }
+
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:48px;
+  }
+  .about-grid p{font-size:16px; color:var(--text); max-width:52ch;}
+  .about-grid p em{font-style:italic;}
+
+  /* EXPERIENCE TIMELINE */
+  .timeline{border-top:1px solid var(--line);}
+  .tl-row{
+    display:grid;
+    grid-template-columns:0.9fr 2.3fr;
+    gap:24px;
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .tl-row .period{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--gold);
+  }
+  .tl-row .period .tag{
+    display:inline-block;
+    margin-top:8px;
+    font-family:'Manrope', sans-serif;
+    font-size:12px;
+    color:var(--slate);
+  }
+  .tl-row h3{font-size:19px; font-weight:500;}
+  .tl-row h3 em{font-style:italic; color:var(--gold);}
+  .tl-row p{margin:6px 0 0; color:var(--slate); font-size:14px; max-width:50ch;}
+  .exp-total{
+    margin-top:22px;
+    font-size:15px;
+    color:var(--text);
+    padding-top:18px;
+    border-top:1px dashed var(--line);
+  }
+  .exp-total em{font-style:italic; font-weight:600; color:var(--ink);}
+
+  .ledger{border-top:1px solid var(--line);}
+  .ledger-row{
+    display:grid;
+    grid-template-columns:1fr 2.2fr;
+    gap:24px;
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .ledger-row h3{
+    font-size:20px;
+    font-weight:500;
+  }
+  .ledger-row p{
+    margin:0;
+    color:var(--slate);
+    font-size:15px;
+    max-width:56ch;
+  }
+  .ledger-row p em{font-style:italic;}
+
+  .principles{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+  }
+  .principle .mk{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--gold);
+    margin-bottom:10px;
+    display:block;
+  }
+  .principle h3{font-size:18px;margin-bottom:8px;}
+  .principle p{font-size:14px; color:var(--slate); margin:0;}
+
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1.2fr;
+    gap:56px;
+  }
+  .contact-info .item{margin-bottom:26px;}
+  .contact-info span{
+    display:block;
+    font-size:11px;
+    letter-spacing:.02em;
+    color:var(--slate);
+    margin-bottom:6px;
+  }
+  .contact-info a, .contact-info div.val{
+    font-size:17px;
+    text-decoration:none;
+    color:var(--ink);
+    font-weight:600;
+  }
+  .free-note{
+    margin-top:30px;
+    padding:16px 18px;
+    background:var(--gold-soft);
+    border-left:3px solid var(--gold);
+    font-size:14px;
+    color:#5a4517;
+    max-width:40ch;
+  }
+  .free-note em{font-style:italic; font-weight:700;}
+  form{display:flex; flex-direction:column; gap:16px;}
+  label{
+    font-size:12px;
+    letter-spacing:.02em;
+    color:var(--slate);
+  }
+  input, textarea{
+    width:100%;
+    padding:12px 14px;
+    font-family:'Manrope', sans-serif;
+    font-size:15px;
+    border:1px solid var(--line);
+    background:#fff;
+    color:var(--text);
+    margin-top:6px;
+  }
+  input:focus, textarea:focus{
+    outline:2px solid var(--gold);
+    outline-offset:1px;
+  }
+  textarea{resize:vertical; min-height:110px;}
+  .form-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .form-row > div{flex:1; min-width:200px;}
+  .submit-btn{margin-top:6px; align-self:flex-start;}
+
+  footer{
+    padding:32px 0;
+    font-size:13px;
+    color:var(--slate);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  footer em{font-style:italic;}
+
+  @media (max-width:720px){
+    .about-grid, .contact-grid{grid-template-columns:1fr;}
+    .principles{grid-template-columns:1fr;}
+    .ledger-row, .tl-row{grid-template-columns:1fr;}
+    nav{display:none;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap headerbar">
+    <div class="brandmark"><b>A. Kumar Somyak</b> · Tax Consultant, Kolkata</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="kicker">Individual &amp; Small Business Tax Support</span>
+    <h1>Kumar Somyak</h1>
+    <p class="role">Professional <em>Tax Consultant</em> Based In Kolkata — Filings, Planning, And Advisory Handled Properly, The First Time.</p>
+
+    <div class="cta-row">
+      <a class="btn" href="https://wa.me/919939400147" target="_blank" rel="noopener">Message On WhatsApp</a>
+      <a class="btn outline" href="mailto:kumarsomyak32@gmail.com">Email Directly</a>
+    </div>
+
+    <div class="hero-meta">
+      <div><span>Phone</span>+91 99394 00147</div>
+      <div><span>Email</span>kumarsomyak32@gmail.com</div>
+      <div><span>Location</span>Kolkata, West Bengal</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>About</h2>
+      <span class="note">Background</span>
+    </div>
+    <div class="about-grid">
+      <p>I Work With Individuals, Freelancers, And Small Businesses To Keep Their Tax Filings Accurate And On Time. My Background Is Inside Two Chartered Accountancy Firms — Working Directly On Returns, Notices, And Client Advisory — So The Guidance You Get Here Reflects <em>Real Filing-Desk Experience</em>, Not Guesswork.</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Experience</h2>
+      <span class="note">Work History</span>
+    </div>
+    <div class="timeline">
+      <div class="tl-row">
+        <div class="period">Faridabad<span class="tag">2 Years</span></div>
+        <div>
+          <h3><em>CA Ashok Jha &amp; Company</em></h3>
+          <p>Worked Across Individual And Business Tax Filings, Client Advisory, And Compliance At This CA Firm In Faridabad.</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="period">Kolkata<span class="tag">Present</span></div>
+        <div>
+          <h3><em>Vishal H. Gupta &amp; Company</em></h3>
+          <p>Currently Working At This CA Firm In Kolkata, Handling Tax Filing, Planning, And Client Advisory.</p>
+        </div>
+      </div>
+    </div>
+    <p class="exp-total">Total experience in this field: <em>4 Years</em></p>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Services</h2>
+      <span class="note">What I Handle</span>
+    </div>
+    <div class="ledger">
+      <div class="ledger-row">
+        <h3>Income Tax Return Filing</h3>
+        <p>ITR Filing For Salaried Individuals, Freelancers, Professionals, And Small Business Owners — <em>Old Vs. New Regime</em> Comparison Included.</p>
+      </div>
+      <div class="ledger-row">
+        <h3>Tax Planning &amp; Savings</h3>
+        <p>Practical, Legal Ways To Reduce Your Tax Outgo — Deductions, Exemptions, And Investment Timing Planned Before The Year-End Rush.</p>
+      </div>
+      <div class="ledger-row">
+        <h3>GST Registration &amp; Filing</h3>
+        <p>GST Registration, Monthly/Quarterly Return Filing, And Reconciliation For Small Businesses And Freelancers.</p>
+      </div>
+      <div class="ledger-row">
+        <h3>Notices &amp; Compliance</h3>
+        <p>Help Responding To Income Tax Department Notices, Mismatches, And Compliance Follow-Ups Without The Panic.</p>
+      </div>
+      <div class="ledger-row">
+        <h3>Bookkeeping Support</h3>
+        <p>Basic Books, Expense Tracking, And Financial Statements Kept Clean And Ready Whenever They're Needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Why Work With Me</h2>
+      <span class="note">Approach</span>
+    </div>
+    <div class="principles">
+      <div class="principle">
+        <span class="mk">Direct</span>
+        <h3>Straight Answers</h3>
+        <p>No Jargon Dump — You'll Know Exactly What's Being Filed And Why.</p>
+      </div>
+      <div class="principle">
+        <span class="mk">Timely</span>
+        <h3>Deadlines Respected</h3>
+        <p>Filings Planned Ahead Of Due Dates, Not Scrambled At The Last Moment.</p>
+      </div>
+      <div class="principle">
+        <span class="mk">Grounded</span>
+        <h3>Firm-Trained Rigor</h3>
+        <p><em>Two CA Firms, Four Years</em> Of Process Behind Every Return And Recommendation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Get In Touch</h2>
+      <span class="note">Free First Consult</span>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="item">
+          <span>Phone / WhatsApp</span>
+          <a href="tel:+919939400147">+91 99394 00147</a>
+        </div>
+        <div class="item">
+          <span>Email</span>
+          <a href="mailto:kumarsomyak32@gmail.com">kumarsomyak32@gmail.com</a>
+        </div>
+        <div class="item">
+          <span>Location</span>
+          <div class="val">Kolkata, West Bengal (Remote Clients Welcome)</div>
+        </div>
+        <div class="free-note">
+          Reaching Out For A Suggestion Or A Service Costs Nothing — Every First Message And Initial Consultation Is <em>Free</em>.
+        </div>
+      </div>
+
+      <form id="contactForm">
+        <div class="form-row">
+          <div>
+            <label>Name</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div>
+            <label>Phone</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+        </div>
+        <div>
+          <label>What Do You Need Help With?</label>
+          <textarea id="need" name="need" required placeholder="e.g. ITR Filing, GST Registration, A Notice I Received..."></textarea>
+        </div>
+        <button type="submit" class="btn submit-btn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:10px;">
+    <div>A. Kumar Somyak — Tax Consultant, Kolkata</div>
+    <div>First Message And Consultation: <em>Free Of Cost</em></div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var need = document.getElementById('need').value.trim();
+    var subject = encodeURIComponent('Website Enquiry From ' + (name || 'A Visitor'));
+    var body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Phone: ' + phone + '\n\n' +
+      'Message:\n' + need
+    );
+    window.location.href = 'mailto:kumarsomyak32@gmail.com?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+</body>
+</html>
